@@ -78,4 +78,28 @@
 
 (color-theme-myror)
 
+
+;;; Helper functions
+;; Full screen toggle
+(defun toggle-fullscreen ()
+  (interactive)
+  (set-frame-parameter nil 'fullscreen (if (frame-parameter nil 'fullscreen)
+                                           nil
+                                         'fullboth)))
+
+(defun recenter-to-top ()
+  "Take the current point and scroll it to within a
+   few lines of the top of the screen."
+  (interactive)
+  (recenter 3))
+
+;;; Helper Binding keys
+(global-set-key [f5] 'desktop-save)
+(global-set-key [f6] 'desktop-read)
+(global-set-key [f7] 'cua-mode)
+(global-set-key [f8] 'desktop-clear)
+(global-set-key [f9] 'ecb-activate)
+(global-set-key (kbd "M-n") 'toggle-fullscreen)
+(global-set-key [(control shift l)] 'recenter-to-top)
+
 (provide 'starter-kit-ror)
