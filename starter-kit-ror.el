@@ -10,6 +10,13 @@
 (add-to-list 'load-path (concat dotfiles-dir "/vendor/rinari"))
 (require 'rinari)
 
+;;; Try lunch rinari in haml or html mode
+(add-hook 'haml-mode-hook
+          (lambda () (rinari-launch)))
+
+(add-hook 'html-mode-hook
+          (lambda () (rinari-launch)))
+
 ;;; Haml mode
 (require 'haml-mode)
 (add-to-list 'auto-mode-alist '("\\.haml$" . haml-mode))
