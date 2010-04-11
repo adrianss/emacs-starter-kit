@@ -13,3 +13,7 @@ cd ../..
 git submodule init vendor/yaml
 git submodule update vendor/yaml
 
+# Install feature submodule
+git submodule init vendor/feature
+git submodule update vendor/feature
+
