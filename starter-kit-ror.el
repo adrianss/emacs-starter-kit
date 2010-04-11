@@ -6,6 +6,9 @@
 ;;; Yaml mode
 (add-to-list 'load-path (concat dotfiles-dir "/vendor/yaml"))
 
+;;; String extensions
+(require 'string-ext)
+
 ;;; Rinari (Ruby on Rails)
 (add-to-list 'load-path (concat dotfiles-dir "/vendor/rinari"))
 (require 'rinari)
