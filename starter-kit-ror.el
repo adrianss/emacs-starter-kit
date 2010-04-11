@@ -34,11 +34,6 @@
                              yas/completing-prompt
                              yas/dropdown-prompt))
 
-(add-hook 'ruby-mode-hook
-          (lambda()
-            (require 'line-num)
-            ))
-
 ;; Remove scrollbars and make hippie expand
 ;; work nicely with yasnippet
 (when (fboundp 'scroll-bar-mode) (scroll-bar-mode -1))
@@ -67,6 +62,14 @@
     (indent-for-tab-command)))
 (add-hook 'find-file-hooks (function (lambda ()
                                        (local-set-key (kbd "TAB") 'indent-or-complete))))
+;;; Ruby hooks
+(add-hook 'ruby-mode-hook
+          (lambda()
+            (require 'line-num)
+            (require 'ruby-electric)
+            (ruby-electric-mode t)            
+            ))
+
 
 ;;; Color Theme
 (add-to-list 'load-path (concat dotfiles-dir "/vendor/color-theme"))
