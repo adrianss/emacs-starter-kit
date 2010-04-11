@@ -86,12 +86,16 @@
     (indent-for-tab-command)))
 (add-hook 'find-file-hooks (function (lambda ()
                                        (local-set-key (kbd "TAB") 'indent-or-complete))))
+
+;;; Line numering
+(require 'line-num)
+
 ;;; Ruby hooks
 (add-hook 'ruby-mode-hook
           (lambda()
-            (require 'line-num)
             (require 'ruby-electric)
-            (ruby-electric-mode t)            
+            (ruby-electric-mode t)
+            (linum-mode t)            
             ))
 
 ;;; Flymake color
