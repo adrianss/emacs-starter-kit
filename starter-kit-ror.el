@@ -18,5 +18,10 @@
 (require 'sass-mode)
 (add-to-list 'auto-mode-alist '("\\.sass$" . sass-mode))
 
+;;; Feature mode (Cucumber)
+(add-to-list 'load-path (concat dotfiles-dir "/vendor/feature"))
+(require 'feature-mode)
+(add-to-list 'auto-mode-alist '("\\.feature$" . feature-mode))
+
 
 (provide 'starter-kit-ror)
