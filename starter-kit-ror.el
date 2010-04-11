@@ -63,4 +63,11 @@
 (add-hook 'find-file-hooks (function (lambda ()
                                        (local-set-key (kbd "TAB") 'indent-or-complete))))
 
+;;; Color Theme
+(add-to-list 'load-path (concat dotfiles-dir "/vendor/color-theme"))
+(require 'color-theme)
+(color-theme-initialize)
+
+(color-theme-myror)
+
 (provide 'starter-kit-ror)
