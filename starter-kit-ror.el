@@ -29,6 +29,11 @@
 (yas/initialize)
 (yas/load-directory (concat dotfiles-dir "/vendor/yasnippet-0.6.1c/snippets"))
 
+(require 'dropdown-list)
+(setq yas/prompt-functions '(yas/ido-prompt
+                             yas/completing-prompt
+                             yas/dropdown-prompt))
+
 (add-hook 'ruby-mode-hook
           (lambda()
             (require 'line-num)
