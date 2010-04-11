@@ -29,4 +29,10 @@
 (yas/initialize)
 (yas/load-directory (concat dotfiles-dir "/vendor/yasnippet-0.6.1c/snippets"))
 
+(add-hook 'ruby-mode-hook
+          (lambda()
+            (require 'line-num)
+            ))
+
+
 (provide 'starter-kit-ror)
