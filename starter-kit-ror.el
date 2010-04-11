@@ -14,5 +14,9 @@
 (require 'haml-mode)
 (add-to-list 'auto-mode-alist '("\\.haml$" . haml-mode))
 
+;;; Sass mode
+(require 'sass-mode)
+(add-to-list 'auto-mode-alist '("\\.sass$" . sass-mode))
+
 
 (provide 'starter-kit-ror)
