@@ -1,0 +1,7 @@
+# -*- mode: snippet -*-
+# key: .tri
+# contributor: Adrian Sanchez
+# name: trigger(event,[data])
+# expand-env: (yas/also-auto-indent-first-line)
+# --
+.trigger("${1:$$(yas/choose-value js-events)}"${2:, data})$0

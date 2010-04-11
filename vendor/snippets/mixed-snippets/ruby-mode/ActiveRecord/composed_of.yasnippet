@@ -1,0 +1,7 @@
+# -*- mode: snippet -*-
+# key: com
+# contributor: Adrian Sanchez
+# name: composed_of :obj ...
+# condition: (yas/rails-model-p)
+# --
+composed_of :${1:attr}${2:, :class_name => "${3:Model}"}, :mapping => [%w(${4:this_class_attr} ${5:other_class_attr})]

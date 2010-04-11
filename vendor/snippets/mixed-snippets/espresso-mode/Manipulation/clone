@@ -1,0 +1,7 @@
+# -*- mode: snippet -*-
+# key: .clo
+# contributor: Adrian Sanchez
+# name: clone(bool)
+# expand-env: (yas/also-auto-indent-first-line)
+# --
+.clone(${1:true})$0

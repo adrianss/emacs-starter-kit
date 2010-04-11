@@ -1,0 +1,7 @@
+# -*- mode: snippet -*-
+# key: .die
+# contributor: Adrian Sanchez
+# name: die([type],[fn])
+# expand-env: (yas/also-auto-indent-first-line)
+# --
+.die("${1:$$(yas/choose-value js-events)}", ${2:handler})$0

@@ -1,0 +1,14 @@
+# -*- mode: snippet -*-
+# key: plug
+# contributor: Adrian Sanchez
+# name: jquery obj method traversal
+# expand-env: (yas/also-auto-indent-first-line)
+# --
+\$.fn.${1:fnName} = function($2){
+var grandparents = [];
+  this.each(function() {
+    grandparents.push(this.parentNode.parentNode);
+  });
+  grandparents = \$.unique(grandparents);
+  return this.setArray(grandparents);
+};

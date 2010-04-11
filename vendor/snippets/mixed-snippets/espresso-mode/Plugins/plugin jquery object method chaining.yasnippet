@@ -1,0 +1,17 @@
+# -*- mode: snippet -*-
+# key: plug
+# contributor: Adrian Sanchez
+# name: jquery obj method chain
+# expand-env: (yas/also-auto-indent-first-line)
+# --
+\$.fn.${1:fnName} = function($2){
+return this.each(function() {
+  var \$element = \$(this);
+$0if (\$element.hasClass(class1)) {
+    \$element.removeClass(class1).addClass(class2);
+  }
+  else if (\$element.hasClass(class2)) {
+    \$element.removeClass(class2).addClass(class1);
+  }
+});
+};

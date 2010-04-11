@@ -1,0 +1,9 @@
+# -*- mode: snippet -*-
+# key: .fil
+# contributor: Adrian Sanchez
+# name: filter(fn)
+# expand-env: (yas/also-auto-indent-first-line)
+# --
+.filter(function (${1:index}) {
+${2:return $1 == 1 || \$(this).attr("id") == "fourth";}
+})$0

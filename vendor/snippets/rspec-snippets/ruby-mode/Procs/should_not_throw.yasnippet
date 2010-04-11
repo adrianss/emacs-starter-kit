@@ -1,0 +1,8 @@
+# -*- mode: snippet -*-
+# key: shnt
+# contributor: Translated from TextMate Snippet
+# name: should_not throw
+## condition: "source.ruby.rspec"
+# --
+lambda { $1 }.should_not throw_symbol(:${2:symbol})
+$0

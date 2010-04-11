@@ -1,0 +1,9 @@
+# -*- mode: snippet -*-
+# key: drea
+# contributor: Adrian Sanchez
+# name: bind(type,[data],fnhandler)
+# expand-env: (yas/also-auto-indent-first-line)
+# --
+$(document).ready(function () {
+$0
+});

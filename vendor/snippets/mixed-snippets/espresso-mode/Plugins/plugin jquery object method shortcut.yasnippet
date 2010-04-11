@@ -1,0 +1,12 @@
+# -*- mode: snippet -*-
+# key: plug
+# contributor: Adrian Sanchez
+# name: jquery obj method shortcut
+# expand-env: (yas/also-auto-indent-first-line)
+# --
+\$.fn.${1:fnName} = function($2){
+   return this.animate({
+     height: 'hide',
+     opacity: 'hide'
+   });
+};

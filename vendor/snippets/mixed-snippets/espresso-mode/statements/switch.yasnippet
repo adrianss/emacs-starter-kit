@@ -1,0 +1,12 @@
+# -*- mode: snippet -*-
+# key: s
+# contributor: Adrian Sanchez
+# name: switch (expression) statement
+# --
+switch($1) {
+  case ${2:expr1}:
+  $0
+  break;
+  default:
+  break;
+};

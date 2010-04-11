@@ -1,0 +1,11 @@
+# -*- mode: snippet -*-
+# key: ffe
+# contributor: Translated from TextMate Snippet
+# name: form_for with errors
+# condition: (yas/rails-view-p)
+# expand-env: (yas/also-auto-indent-first-line)
+# --
+= error_messages_for :${1:model}
+
+- form_for @${2:$1} do |f|
+  $0

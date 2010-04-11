@@ -1,0 +1,22 @@
+# -*- mode: snippet -*-
+# key: $.ajr
+# contributor: Adrian Sanchez
+# name: jQuery.ajax(options)
+# expand-env: (yas/also-auto-indent-first-line)
+# --
+\$.ajax({
+  url: '${1:/url}',
+  type: "${2:$$(yas/choose-value http-type-request)}",
+  data: ${3:Element or Expression},
+  complete: handler, 
+  success: handler,
+  error: handler,
+  timeout: ${4:4000},
+  username: "user",
+  password: "pass",
+  cache: ${6:$$(yas/choose-value opc-true-or-false)},
+  dataType: "${7:$$(yas/choose-value js-ajax-datatype)}",
+  async: ${8:$$(yas/choose-value opc-true-or-false)},
+  contentType: ${9:$$(yas/choose-value http-content-type)}
+});
+$0

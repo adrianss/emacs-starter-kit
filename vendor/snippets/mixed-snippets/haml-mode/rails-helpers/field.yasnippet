@@ -1,0 +1,11 @@
+# -*- mode: snippet -*-
+# key: field
+# contributor: Adrian Sanchez
+# name: form_field (field)
+# condition: (yas/rails-view-p)
+# expand-env: (yas/also-auto-indent-first-line)
+# --
+.form_field
+  .form_label= f.label :${1:name}, t('activerecord.attributes.${2:model}.$1', :default => '$1')
+  .form_input= f.text_field :$1, :class => 'input_text'
+  = f.error_message_on :$1$0

@@ -1,0 +1,7 @@
+# -*- mode: snippet -*-
+# key: $.ajr
+# contributor: Adrian Sanchez
+# name: get(url,[data],[callback],[type])
+# expand-env: (yas/also-auto-indent-first-line)
+# --
+\$.get("${1:/URL}"${2:, {${3:name: "Jhon", addres: "calle"}}}${4:, ${5:callback}}, "${7:$$(yas/choose-value js-ajax-datatype)}")$0

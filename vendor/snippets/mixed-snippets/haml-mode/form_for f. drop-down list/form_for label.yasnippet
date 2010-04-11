@@ -1,0 +1,8 @@
+# -*- mode: snippet -*-
+# key: f.
+# contributor: Translated from TextMate Snippet
+# name: f.label (ffl)
+# condition: (yas/rails-view-p)
+# expand-env: (yas/also-auto-indent-first-line)
+# --
+= ${1:f}.label :${2:attribute}${3:, "${4:${2:$(capitalize (replace-regexp-in-string "_" " " yas/text))}}"}

@@ -1,0 +1,9 @@
+# -*- mode: snippet -*-
+# key: op
+# contributor: Translated from TextMate Snippet
+# name: opacity: [for Safari, FF & IE]
+# expand-env: (yas/also-auto-indent-first-line)
+# --
+opacity: ${1:0.5};${100:
+}-moz-opacity: ${1:0.5};${100:
+}filter:alpha(opacity=${2:${1/(1?)0?\.(.*)/$1$2/}${1/^\d*\.\d\d+$|^\d*$|(^\d\.\d$)/(?1:0)/}})$0

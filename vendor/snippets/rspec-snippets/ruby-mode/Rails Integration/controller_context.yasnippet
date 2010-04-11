@@ -1,0 +1,11 @@
+# -*- mode: snippet -*-
+# key: desc
+# contributor: Translated from TextMate Snippet
+# name: describe (Controller)
+## condition: "source.ruby.rspec"
+# --
+require File.expand_path(File.dirname(__FILE__) + '/../spec_helper')
+
+describe ${1:controller} do
+  $0
+end

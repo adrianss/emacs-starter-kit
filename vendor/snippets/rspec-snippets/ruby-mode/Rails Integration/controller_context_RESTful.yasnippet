@@ -1,0 +1,9 @@
+# -*- mode: snippet -*-
+# key: desrc
+# contributor: Translated from TextMate Snippet
+# name: describe (RESTful Controller)
+## condition: "source.ruby.rspec"
+# --
+describe ${1:controller}, "${2:GET|POST|PUT|DELETE} ${3:/some/path}${4: with some parameters}" do
+  $0
+end

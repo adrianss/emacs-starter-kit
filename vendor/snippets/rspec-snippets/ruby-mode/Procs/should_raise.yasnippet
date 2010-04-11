@@ -1,0 +1,8 @@
+# -*- mode: snippet -*-
+# key: shre
+# contributor: Translated from TextMate Snippet
+# name: should raise_error
+## condition: "source.ruby.rspec"
+# --
+lambda { $1 }.should raise_error(${2:error})
+$0

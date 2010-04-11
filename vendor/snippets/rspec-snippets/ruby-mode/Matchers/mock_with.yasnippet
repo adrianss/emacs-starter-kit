@@ -1,0 +1,9 @@
+# -*- mode: snippet -*-
+# key: mocw
+# contributor: Translated from TextMate Snippet
+# name: mock_with
+## condition: "source.ruby.rspec"
+# --
+Spec::Runner.configure do |config|
+	config.mock_with :${0:mocha|flexmock|rr}
+end

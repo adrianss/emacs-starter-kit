@@ -1,0 +1,7 @@
+# -*- mode: snippet -*-
+# key: .unb
+# contributor: Adrian Sanchez
+# name: unbind(type,[fnhandler])
+# expand-env: (yas/also-auto-indent-first-line)
+# --
+.unbind("${1:$$(yas/choose-value js-events)}", ${2:handler})$0

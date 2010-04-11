@@ -1,0 +1,9 @@
+# -*- mode: snippet -*-
+# key: .one
+# contributor: Adrian Sanchez
+# name: one(type,[data],fnlambda)
+# expand-env: (yas/also-auto-indent-first-line)
+# --
+.one("${1:$$(yas/choose-value js-events)}", function(${2:event}) {
+	$0
+});

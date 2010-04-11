@@ -1,0 +1,13 @@
+# -*- mode: snippet -*-
+# key: .ani
+# contributor: Adrian Sanchez
+# name: animate(params,option)
+# expand-env: (yas/also-auto-indent-first-line)
+# --
+.animate({
+${1:borderWidth: "10px",
+opacity: 0.5
+}}, {
+${2:duration: 500,
+queue: false
+}});$0

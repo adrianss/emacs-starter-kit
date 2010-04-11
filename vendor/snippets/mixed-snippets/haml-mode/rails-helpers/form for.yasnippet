@@ -1,0 +1,9 @@
+# -*- mode: snippet -*-
+# key: ff
+# contributor: Adrian Sanchez
+# name: form_form with class (ff)
+# condition: (yas/rails-view-p)
+# expand-env: (yas/also-auto-indent-first-line)
+# --
+- form_for (@${1:object}${2:, :html => {:class => "${3:baseform}"}}) do |f|
+  $0
