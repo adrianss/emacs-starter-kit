@@ -34,6 +34,10 @@
                              yas/completing-prompt
                              yas/dropdown-prompt))
 
+;; Automatic Indent line in yasnippets
+(setq yas/indent-line 'auto)
+(setq yas/also-auto-indent-first-line t)
+
 ;; Remove scrollbars and make hippie expand
 ;; work nicely with yasnippet
 (when (fboundp 'scroll-bar-mode) (scroll-bar-mode -1))
