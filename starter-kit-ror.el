@@ -70,6 +70,9 @@
             (ruby-electric-mode t)            
             ))
 
+;;; Flymake color
+(set-face-background 'flymake-errline "red4")
+(set-face-background 'flymake-warnline "dark slate blue")
 
 ;;; Color Theme
 (add-to-list 'load-path (concat dotfiles-dir "/vendor/color-theme"))
