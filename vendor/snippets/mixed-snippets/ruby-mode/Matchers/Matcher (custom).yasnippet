@@ -1,0 +1,27 @@
+# -*- mode: snippet -*-
+# key: matc
+# contributor: Adrian Sanchez, fix 
+# name: Matcher (Custom)
+# --
+class ${1:WorkFor}
+  def initialize(${2:boss})
+    @$2 = $2
+  end
+
+  def matches?(${3:worker})
+    @$3 = $3
+    @$3.${1:$(camelize-string text)}? @$2$0
+  end
+
+  def failure_message_for_should
+    "expected #{@$3.inspect} ${1:$(humanize-string text)} #{@$2.inspect}, but it didn't"
+  end
+
+  def failure_message_for_should_not
+    "expected #{@$3.inspect} ${1:$(humanize-string text)} #{@$2.inspect}, but it did"
+  end
+end
+
+def ${1:$(camelize-string text)}($2)
+  $1.new($2)
+end
