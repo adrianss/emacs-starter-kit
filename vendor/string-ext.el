@@ -29,12 +29,12 @@
 FROM must equal :begin or :end. Return result string,
 else return nil."
   (cond
-    ((and (eq from :begin)
-          (string-ext/start-p string cut))
-     (substring string (length cut) (length string)))
-    ((and (eq from :end)
-          (string-ext/end-p string cut))
-     (substring string 0 (- (length string) (length cut))))))
+   ((and (eq from :begin)
+         (string-ext/start-p string cut))
+    (substring string (length cut) (length string)))
+   ((and (eq from :end)
+         (string-ext/end-p string cut))
+    (substring string 0 (- (length string) (length cut))))))
 ;; (t string)))
 
 (defun string-ext/cut-safe (string cut from)
@@ -86,10 +86,10 @@ else return nil."
   "Convert from camel_case/string to CamelCase::String."
   (let ((case-fold-search nil))
     (replace-regexp-in-string " " ""
-      (replace-regexp-in-string " " "::"
-        (capitalize
-         (replace-regexp-in-string "\_" " "
-           (replace-regexp-in-string "\/" " " string)))))))
+                              (replace-regexp-in-string " " "::"
+                                                        (capitalize
+                                                         (replace-regexp-in-string "\_" " "
+                                                                                   (replace-regexp-in-string "\/" " " string)))))))
 
 (defalias 'decamelize-string 'string-ext/decamelize)
 
@@ -98,11 +98,11 @@ else return nil."
   (let ((case-fold-search nil))
     (downcase
      (replace-regexp-in-string "::" "/"
-       (replace-regexp-in-string
-        "\\([A-Z]+\\)\\([A-Z][a-z]\\)" "\\1_\\2"
-          (replace-regexp-in-string
-            "\\([a-z\\d]\\)\\([A-Z]\\)" "\\1_\\2"
-            string))))))
+                               (replace-regexp-in-string
+                                "\\([A-Z]+\\)\\([A-Z][a-z]\\)" "\\1_\\2"
+                                (replace-regexp-in-string
+                                 "\\([a-z\\d]\\)\\([A-Z]\\)" "\\1_\\2"
+                                 string))))))
 
 (defalias 'camelize-string 'string-ext/camelize)
 
@@ -115,6 +115,21 @@ else return nil."
 (defun string-ext/safe-symbol (str)
   "Return symbol from STR and replace and non word chars to '-'."
   (intern (replace-regexp-in-string "[^a-zA-z0-9]+" "-"
-           (downcase str))))
+                                    (downcase str))))
+
+(defun string-ext/humanize (string)
+  "Convert from CamelCase::String to camel case/string."
+  (let ((case-fold-search nil))
+    (downcase
+     (replace-regexp-in-string "::" "/"
+                               (replace-regexp-in-string
+                                "\\([A-Z]+\\)\\([A-Z][a-z]\\)" "\\1 \\2"
+                                (replace-regexp-in-string
+                                 "\\([a-z\\d]\\)\\([A-Z]\\)" "\\1 \\2"
+                                 (replace-regexp-in-string "_" " "
+                                                           string)))))))
+
+(defalias 'humanize-string 'string-ext/humanize)
 
 (provide 'string-ext)
+
