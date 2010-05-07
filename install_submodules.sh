@@ -17,3 +17,7 @@ git submodule update vendor/yaml
 git submodule init vendor/feature
 git submodule update vendor/feature
 
+# Install yasnippet submodule
+git submodule init vendor/yasnippet
+git submodule update vendor/yasnippet
+
