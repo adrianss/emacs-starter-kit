@@ -9,4 +9,4 @@
 	url = git://github.com/michaelklishin/cucumber.el.git
 [submodule "vendor/yasnippet"]
 	path = vendor/yasnippet
-	url = http://github.com/emacsmirror/yasnippet.git
+	url = git://github.com/emacsmirror/yasnippet.git
