@@ -20,4 +20,3 @@ git submodule update vendor/feature
 # Install yasnippet submodule
 git submodule init vendor/yasnippet
 git submodule update vendor/yasnippet
-
