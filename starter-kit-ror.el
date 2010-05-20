@@ -5,6 +5,8 @@
 
 ;;; Yaml mode
 (add-to-list 'load-path (concat dotfiles-dir "/vendor/yaml"))
+(require 'yaml-mode)
+(add-to-list 'auto-mode-alist '("\\.yml$" . yaml-mode))
 
 ;;; String extensions
 (require 'string-ext)
@@ -12,6 +14,11 @@
 ;;; Rinari (Ruby on Rails)
 (add-to-list 'load-path (concat dotfiles-dir "/vendor/rinari"))
 (require 'rinari)
+
+(define-key rinari-minor-mode-map [(control shift down)] 'rinari-find-rspec)
+(define-key rinari-minor-mode-map [(control shift left)] 'rinari-find-controller)
+(define-key rinari-minor-mode-map [(control shift up)] 'rinari-find-model)
+(define-key rinari-minor-mode-map [(control shift right)] 'rinari-find-view)
 
 ;;; Try lunch rinari in haml or html mode
 (add-hook 'haml-mode-hook
