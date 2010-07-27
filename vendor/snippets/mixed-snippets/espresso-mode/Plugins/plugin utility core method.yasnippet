@@ -4,6 +4,8 @@
 # name: utility core method
 # expand-env: (yas/also-auto-indent-first-line)
 # --
-\$.${1:fnName} = function($2){
-$0
-};
+(function(\$) {
+  \$.${1:fnName} = function(${2:options}) {
+    $0
+  }
+})(jQuery);

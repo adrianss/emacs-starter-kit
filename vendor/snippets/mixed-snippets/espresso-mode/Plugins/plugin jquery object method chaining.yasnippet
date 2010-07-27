@@ -4,14 +4,17 @@
 # name: jquery obj method chain
 # expand-env: (yas/also-auto-indent-first-line)
 # --
-\$.fn.${1:fnName} = function($2){
-return this.each(function() {
-  var \$element = \$(this);
-$0if (\$element.hasClass(class1)) {
-    \$element.removeClass(class1).addClass(class2);
-  }
-  else if (\$element.hasClass(class2)) {
-    \$element.removeClass(class2).addClass(class1);
-  }
-});
-};
+(function(\$) {
+  \$.fn.${1:fnName} = function(options) {
+    var opts = \$.extend({}, \$.fn.pulse.defaults, options);
+    return this.each(function() {
+      // do something with \$(this) $0
+    });
+  };
+
+  // plugin default options
+  \$.fn.$1.defaults = {
+     opt1: "slow",
+     opt2: 2
+  };
+})(jQuery);
