@@ -20,3 +20,7 @@ git submodule update vendor/feature
 # Install yasnippet submodule
 git submodule init vendor/yasnippet
 git submodule update vendor/yasnippet
+
+# Install Zencoding
+git submodule init vendor/zencoding
+git submodule update vendor/zencoding
