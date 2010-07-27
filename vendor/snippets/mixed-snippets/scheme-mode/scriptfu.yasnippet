@@ -1,0 +1,36 @@
+# -*- mode: snippet -*-
+# key: scrfu
+# contributor: Adrian Sanchez
+# name: script fu
+# --
+(define (${1:script-fu-func-name} inText inFont inFontSize inTextColor)
+  (let*
+    (
+      ; define our local variables
+      (theVar 10)
+    )
+    ; real code 
+    ; (gimp-undo-push-group-start)
+    $0
+    ; (gimp-undo-push-group-end)
+  )
+)
+
+(script-fu-register
+  "$1"
+  _"${2:Menu Label}"
+  "Description \
+    More Description."
+  "Adrian Sanchez"
+  "copyright 2010, Adrian Sanchez"
+  "June 05, 2010"
+  ""                                          ;image type that the script works on
+  SF-STRING      _"Text"          "Text Box"   ;a string variable
+  SF-FONT        _"Font"          "Charter"    ;a font variable
+  SF-ADJUSTMENT  _"Font size"     '(50 1 1000 1 10 0 1)
+                                              ;a spin-button
+  SF-COLOR       _"Color"         '(0 0 0)     ;color variable
+)
+
+(script-fu-menu-register "$1" "<Image>/File/path/to")
+
