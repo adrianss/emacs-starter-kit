@@ -8,6 +8,15 @@
 (require 'yaml-mode)
 (add-to-list 'auto-mode-alist '("\\.yml$" . yaml-mode))
 
+;;; Sass CSS
+(add-to-list 'auto-mode-alist '("\\.scss$" . css-mode))
+(setq css-indent-offset 2)
+
+;;; ZenCoding
+(add-to-list 'load-path (concat dotfiles-dir "/vendor/zencoding"))
+(require 'zencoding-mode)
+(add-hook 'sgml-mode-hook 'zencoding-mode)
+
 ;;; String extensions
 (require 'string-ext)
 
@@ -102,7 +111,7 @@
           (lambda()
             (require 'ruby-electric)
             (ruby-electric-mode t)
-            (linum-mode t)            
+            (linum-mode t)
             ))
 
 ;;; Flymake color
