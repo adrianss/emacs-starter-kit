@@ -55,11 +55,17 @@
 (require 'feature-mode)
 (add-to-list 'auto-mode-alist '("\\.feature$" . feature-mode))
 
-;;; Yasnippet
-(add-to-list 'load-path (concat dotfiles-dir "/vendor/yasnippet-0.6.1c"))
+;;; Yasnippet 0.6.1c stable
+;; (add-to-list 'load-path (concat dotfiles-dir "/vendor/yasnippet-0.6.1c"))
+;; (require 'yasnippet)
+;; (yas/initialize)
+;; (yas/load-directory (concat dotfiles-dir "/vendor/yasnippet-0.6.1c/snippets"))
+
+;;; Yasnippet from submodule
+(add-to-list 'load-path (concat dotfiles-dir "/vendor/yasnippet"))
 (require 'yasnippet)
 (yas/initialize)
-(yas/load-directory (concat dotfiles-dir "/vendor/yasnippet-0.6.1c/snippets"))
+(yas/load-directory (concat dotfiles-dir "/vendor/yasnippet/snippets"))
 
 ;; Load this alternate directory of snippets
 (yas/load-directory (concat dotfiles-dir "/vendor/snippets/rspec-snippets"))
