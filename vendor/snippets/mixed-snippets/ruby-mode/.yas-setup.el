@@ -1,9 +1,32 @@
 (defvar yas/rails-root-cache nil)
 
+(add-to-list 'auto-mode-alist '("\\.erb$" . yas/rails-erb-mode))
+
+(define-derived-mode yas/rails-erb-mode
+  nxml-mode "eRB"
+  "Embedded Ruby Mode, very thin layer over `nxml-mode'."
+  (add-to-list (make-local-variable 'yas/extra-modes) 'html-mode)
+  (rng-set-vacuous-schema)
+  (message "hey erb mode"))
+
+(defvar yas/rails-erb-font-lock-keywords
+  '(("\\(<%=\\)\\(.*+\\)\\(%>\\)"
+     (1 font-lock-function-name-face)
+     (2 font-lock-string-face)
+     (3 font-lock-function-name-face))
+    ("\\(<%\\)\\(.*+\\)\\(%>\\)"
+     (1 font-lock-variable-name-face)
+     (2 font-lock-string-face)
+     (3 font-lock-variable-name-face)))
+  "(Crummy) font lock highlighting for ERB constructs.."
+  )
+(font-lock-add-keywords 'yas/rails-erb-mode yas/rails-erb-font-lock-keywords)
+
 ;; stolen from rinari-mode's rinari-root
 (defun yas/rails-root (&optional dir)
   (or dir (setq dir default-directory))
-  (or yas/rails-root-cache
+  (or (and (featurep 'rinari) (rinari-root dir))
+      yas/rails-root-cache
       (if (file-exists-p (expand-file-name
                           "environment.rb" (expand-file-name "config" dir)))
           (set (make-local-variable 'yas/rails-root-cache) dir)
@@ -17,58 +40,58 @@
   (interactive "r\nsName your partial: ")
   (let* ((path (buffer-file-name)) ending)
     (if (string-match "view" path)
-        (let ((ending (and (string-match ".+?\\(\\.[^/]*\\)$" path)
-                           (match-string 1 path)))
-              (partial-name
-               (replace-regexp-in-string "[[:space:]]+" "_" partial-name)))
-          (kill-region begin end)
-          (if (string-match "\\(.+\\)/\\(.+\\)" partial-name)
-              (let ((default-directory (expand-file-name (match-string 1 partial-name)
-                                                         (expand-file-name ".."))))
-                (find-file (concat "_" (match-string 2 partial-name) ending)))
-            (find-file (concat "_" partial-name ending)))
-          (yank) (pop-to-buffer nil)
-          (insert (concat "<%= render :partial => '" partial-name "' %>\n")))
+	(let ((ending (and (string-match ".+?\\(\\.[^/]*\\)$" path)
+			   (match-string 1 path)))
+	      (partial-name
+	       (replace-regexp-in-string "[[:space:]]+" "_" partial-name)))
+	  (kill-region begin end)
+	  (if (string-match "\\(.+\\)/\\(.+\\)" partial-name)
+	      (let ((default-directory (expand-file-name (match-string 1 partial-name)
+							 (expand-file-name ".."))))
+		(find-file (concat "_" (match-string 2 partial-name) ending)))
+	    (find-file (concat "_" partial-name ending)))
+	  (yank) (pop-to-buffer nil)
+	  (insert (concat "<%= render :partial => '" partial-name "' %>\n")))
       (message "not in a view"))))
 ;;;
 ;;; The TextMate "intelligent" migration snippet
 ;;
 (defvar yas/rails-intelligent-migration-snippet-bits
-  '((:rename_column . ((:up   . "rename_column :${1:table_name}, :${2:column_name}, :${3:new_column_name}$0")
-                       (:down . "rename_column :$1, :$3, :$2" )))
+      '((:rename_column . ((:up   . "rename_column :${1:table_name}, :${2:column_name}, :${3:new_column_name}$0")
+                           (:down . "rename_column :$1, :$3, :$2" )))
 
-    (:rename_column_continue . ((:up   . "rename_column :${1:table_name}, :${2:column_name}, :${3:new_column_name}\nmncc$0")
-                                (:down . "rename_column :$1, :$3, :$2" )))
+        (:rename_column_continue . ((:up   . "rename_column :${1:table_name}, :${2:column_name}, :${3:new_column_name}\nmncc$0")
+                                    (:down . "rename_column :$1, :$3, :$2" )))
 
-    (:rename_table . ((:up   . "rename_table :${1:old_table_name}, :${2:new_table_name}$0")
-                      (:down . "rename_table :$2, :$1" )))
+        (:rename_table . ((:up   . "rename_table :${1:old_table_name}, :${2:new_table_name}$0")
+                          (:down . "rename_table :$2, :$1" )))
 
-    (:rename_table_continue . ((:up   . "rename_table :${1:old_table_name}, :${2:new_table_name}\nmntc$0")
-                               (:down . "rename_table :$2, :$1" )))
+        (:rename_table_continue . ((:up   . "rename_table :${1:old_table_name}, :${2:new_table_name}\nmntc$0")
+                                   (:down . "rename_table :$2, :$1" )))
 
-    (:add_remove_column . ((:up   . "add_column :${1:table_name}, :${2:column_name}, :${3:string}$0")
-                           (:down . "remove_column :$1, :$2" )))
+        (:add_remove_column . ((:up   . "add_column :${1:table_name}, :${2:column_name}, :${3:string}$0")
+                               (:down . "remove_column :$1, :$2" )))
+        
+        (:add_remove_column_continue . ((:up   . "add_column :${1:table_name}, :${2:column_name}, :${3:string}\nmarcc$0")
+                                        (:down . "remove_column :$1, :$2" )))
+        
+        (:remove_add_column . ((:up   . "remove_column :${1:table_name}, :${2:column_name}$0")
+                               (:down . "add_column :$1, :$2, :$3{string}" )))
 
-    (:add_remove_column_continue . ((:up   . "add_column :${1:table_name}, :${2:column_name}, :${3:string}\nmarcc$0")
-                                    (:down . "remove_column :$1, :$2" )))
+        (:create_drop_table . ((:up   . "create_table :${1:table_name}, :force . true do |t|\nt.$0\nt.timestamps\nend")
+                               (:down . "drop_table :$1" )))
 
-    (:remove_add_column . ((:up   . "remove_column :${1:table_name}, :${2:column_name}$0")
-                           (:down . "add_column :$1, :$2, :$3{string}" )))
+        (:change_change_table . ((:up   . "change_table :${1:table_name} do |t|\nt.$0\nend")
+                                 (:down . "change_table :$1 do |t|\nend" )))
 
-    (:create_drop_table . ((:up   . "create_table :${1:table_name}, :force . true do |t|\nt.$0\nt.timestamps\nend")
-                           (:down . "drop_table :$1" )))
+        (:add_remove_index . ((:up   . "add_index :${1:table_name}, :${2:column_name}$0")
+                              (:down . "remove_index :$1, :$2" )))
 
-    (:change_change_table . ((:up   . "change_table :${1:table_name} do |t|\nt.$0\nend")
-                             (:down . "change_table :$1 do |t|\nend" )))
+        (:add_remove_unique_index . ((:up   . "add_index :${1:table_name}, ${2:[:${3:column_name}${4:, :${5:column_name}}]}, :unique . true$0")
+                                     (:down . "remove_index :$1, :column . $2" )))
 
-    (:add_remove_index . ((:up   . "add_index :${1:table_name}, :${2:column_name}$0")
-                          (:down . "remove_index :$1, :$2" )))
-
-    (:add_remove_unique_index . ((:up   . "add_index :${1:table_name}, ${2:[:${3:column_name}${4:, :${5:column_name}}]}, :unique . true$0")
-                                 (:down . "remove_index :$1, :column . $2" )))
-
-    (:add_remove_named_index . ((:up   . "add_index :${1:table_name}, [:${2:column_name}${3:, :${4:column_name}}], :name . \"${5:index_name}\"${6:, :unique . true}$0")
-                                (:down . "remove_index :$1, :name . :$5" )))))
+        (:add_remove_named_index . ((:up   . "add_index :${1:table_name}, [:${2:column_name}${3:, :${4:column_name}}], :name . \"${5:index_name}\"${6:, :unique . true}$0")
+                                    (:down . "remove_index :$1, :name . :$5" )))))
 
 
 (defun yas/rails-intelligent-migration-snippet (type)
@@ -86,12 +109,12 @@
       (yas/expand-snippet snippet))))
 
 (yas/define-condition-cache
- yas/rails-intelligent-migration-snippet-condition-p
- "Non-nil if an \"intelligent\" migration snippet should be expanded"
- (and (yas/rails-migration-p)
-      (not (yas/rails-in-create-table-p))
-      (not (yas/rails-in-change-table-p))
-      (yas/rails-in-ruby-block-like "self\.up")))
+  yas/rails-intelligent-migration-snippet-condition-p
+  "Non-nil if an \"intelligent\" migration snippet should be expanded"
+  (and (yas/rails-migration-p)
+       (not (yas/rails-in-create-table-p))
+       (not (yas/rails-in-change-table-p))
+       (yas/rails-in-ruby-block-like "self\.up")))
 
 (defun yas/rails-in-ruby-block-like (regexp)
   (save-excursion
@@ -124,7 +147,7 @@
 
 (yas/define-condition-cache
  yas/rails-controller-p
- "Non-nil if the current buffer is a rails controller."
+"Non-nil if the current buffer is a rails controller." 
  (and (yas/rails-root)
       (string-match "app/controllers/$" default-directory)))
 
@@ -140,9 +163,33 @@
  (and (yas/rails-root)
       (string-match "spec/factories/" default-directory)))
 
+(yas/define-condition-cache
+ yas/rails-rspec-view-p
+ "Non-nil if the current buffer is a rspec view."
+ (and (yas/rails-root)
+      (string-match "spec/views/" default-directory)))
+
+(yas/define-condition-cache
+ yas/rails-rspec-controller-p
+ "Non-nil if the current buffer is a rspec controller."
+ (and (yas/rails-root)
+      (string-match "spec/controllers/" default-directory)))
+
+(yas/define-condition-cache
+ yas/rails-rspec-model-p
+ "Non-nil if the current buffer is a rspec model."
+ (and (yas/rails-root)
+      (string-match "spec/models/" default-directory)))
+
+(defun yas/rails-activate-maybe ()
+  (when (and yas/minor-mode
+             (yas/rails-root))
+    (add-to-list (make-local-variable 'yas/extra-modes) 'rails-mode)))
+
 (defadvice cd (after yas/rails-on-cd-activate activate)
-  "Set `yas/mode-symbol' to `rails-mode' so that rails snippets
-are recognized"
+  "Add `rails-mode' to `yas/extra-modes' so that rails snippets
+are recognized. Stolen from `rinari-mode' more or`' less."
   (setq yas/rails-root-cache nil)
-  (when (yas/rails-root)
-    (set (make-local-variable 'yas/mode-symbol) 'rails-mode)))
+  (yas/rails-activate-maybe))
+
+(add-hook 'yas/minor-mode-hook 'yas/rails-activate-maybe)
