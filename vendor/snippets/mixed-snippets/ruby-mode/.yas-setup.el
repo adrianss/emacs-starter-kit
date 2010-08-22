@@ -118,6 +118,12 @@
       (string-match "app/models/$" default-directory)))
 
 (yas/define-condition-cache
+ yas/rails-mailer-p
+ "Non-nil if the current buffer is a rails observer model."
+ (and (yas/rails-root)
+      (string-match "app/mailers/$" default-directory)))
+
+(yas/define-condition-cache
  yas/rails-view-p
  "Non-nil if the current buffer is a rails view."
  (and (yas/rails-root)
