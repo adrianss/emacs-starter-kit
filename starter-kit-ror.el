@@ -36,6 +36,16 @@
 (add-hook 'html-mode-hook
           (lambda () (rinari-launch)))
 
+;;; rhtml mode
+(add-to-list 'load-path (concat dotfiles-dir "/vendor/rhtml"))
+(require 'rhtml-mode)
+
+
+;;; Use TAG file for find function in proyect
+;;; try execute someting like: ctags-exuberant -a -e -f TAGS --tag-relative -R app lib vendor
+(setq rinari-tags-file-name "TAGS")
+
+
 ;;; Haml mode
 (require 'haml-mode)
 (add-to-list 'auto-mode-alist '("\\.haml$" . haml-mode))

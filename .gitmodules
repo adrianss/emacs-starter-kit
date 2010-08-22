@@ -13,3 +13,6 @@
 [submodule "vendor/zencoding"]
 	path = vendor/zencoding
 	url = http://github.com/chrisdone/zencoding.git
+[submodule "vendor/rhtml"]
+	path = vendor/rhtml
+	url = http://github.com/eschulte/rhtml.git

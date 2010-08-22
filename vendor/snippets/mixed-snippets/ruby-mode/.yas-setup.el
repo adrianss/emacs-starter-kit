@@ -1,27 +1,5 @@
 (defvar yas/rails-root-cache nil)
 
-(add-to-list 'auto-mode-alist '("\\.erb$" . yas/rails-erb-mode))
-
-(define-derived-mode yas/rails-erb-mode
-  nxml-mode "eRB"
-  "Embedded Ruby Mode, very thin layer over `nxml-mode'."
-  (add-to-list (make-local-variable 'yas/extra-modes) 'html-mode)
-  (rng-set-vacuous-schema)
-  (message "hey erb mode"))
-
-(defvar yas/rails-erb-font-lock-keywords
-  '(("\\(<%=\\)\\(.*+\\)\\(%>\\)"
-     (1 font-lock-function-name-face)
-     (2 font-lock-string-face)
-     (3 font-lock-function-name-face))
-    ("\\(<%\\)\\(.*+\\)\\(%>\\)"
-     (1 font-lock-variable-name-face)
-     (2 font-lock-string-face)
-     (3 font-lock-variable-name-face)))
-  "(Crummy) font lock highlighting for ERB constructs.."
-  )
-(font-lock-add-keywords 'yas/rails-erb-mode yas/rails-erb-font-lock-keywords)
-
 ;; stolen from rinari-mode's rinari-root
 (defun yas/rails-root (&optional dir)
   (or dir (setq dir default-directory))
