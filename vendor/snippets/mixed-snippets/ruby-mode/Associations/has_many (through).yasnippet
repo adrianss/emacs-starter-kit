@@ -2,6 +2,6 @@
 # key: hmt
 # contributor: Translated from TextMate Snippet
 # name: has_many (through)
-## condition: "source.ruby.rails"
+# condition: (yas/rails-model-p)
 # --
 has_many :${1:objects}, :through => :${2:join_association}${3:, :source => :${4:$2_table_foreign_key_to_$1_table}}
