@@ -1,7 +1,7 @@
 # -*- mode: snippet -*-
-# contributor: Translated from TextMate Snippet
-# name: params[…]
-## binding: "^p"
-## condition: "source.ruby.rails"
+# key: p
+# contributor: Adrian Sanchez
+# name: params[...]
+# condition: (or (or (yas/rails-controller-p) (yas/rails-model-p)) (yas/rails-view-p))
 # --
-params[:${1:id}]
+params[$0]
