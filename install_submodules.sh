@@ -24,3 +24,7 @@ git submodule update vendor/yasnippet
 # Install Zencoding
 git submodule init vendor/zencoding
 git submodule update vendor/zencoding
+
+# Install RHTML
+git submodule init vendor/rhtml
+git submodule update vendor/rhtml
