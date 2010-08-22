@@ -2,6 +2,6 @@
 # key: verify
 # contributor: Translated from TextMate Snippet
 # name: verify — render
-## condition: "source.ruby.rails"
+# condition: (yas/rails-controller-p)
 # --
 verify :only => [:$1], :method => :post, :render => {:status => 500, :text => "use HTTP-POST"}
