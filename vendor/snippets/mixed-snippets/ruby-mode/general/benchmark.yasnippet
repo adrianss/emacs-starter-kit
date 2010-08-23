@@ -1,0 +1,8 @@
+# -*- mode: snippet -*-
+# key: bm
+# contributor: Adrian Sanchez
+# name: bm(times) do |o|
+# --
+bm(${1:10}) do |${2:x}|
+  $2.report("${3:message}") { ${4:n}.times { $0 } }
+end

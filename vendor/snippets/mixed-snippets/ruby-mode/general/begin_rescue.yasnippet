@@ -1,0 +1,11 @@
+# -*- mode: snippet -*-
+# key: bres
+# contributor: Adrian Sanchez
+# name: begin rescue ...
+# --
+begin
+  $0
+rescue${1: ${2:ArgumentError => ex}}
+${3:else}
+${4:ensure}
+end
