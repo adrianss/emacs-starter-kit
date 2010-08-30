@@ -156,6 +156,9 @@
   (interactive)
   (recenter 3))
 
+;;; Set the tab indent to 4 spaces for javascript
+(setq espresso-indent-level 4)
+
 ;;; Helper Binding keys
 (global-set-key [f5] 'desktop-save)
 (global-set-key [f6] 'desktop-read)
