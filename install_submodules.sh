@@ -28,3 +28,7 @@ git submodule update vendor/zencoding
 # Install RHTML
 git submodule init vendor/rhtml
 git submodule update vendor/rhtml
+
+# Install textmate mode
+git submodule init vendor/textmate.el
+git submodule update vendor/textmate.el

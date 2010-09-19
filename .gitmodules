@@ -16,3 +16,6 @@
 [submodule "vendor/rhtml"]
 	path = vendor/rhtml
 	url = http://github.com/eschulte/rhtml.git
+[submodule "vendor/textmate.el"]
+	path = vendor/textmate.el
+	url = git://github.com/defunkt/textmate.el.git

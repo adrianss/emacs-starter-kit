@@ -3,6 +3,14 @@
 
 (add-to-list 'load-path (concat dotfiles-dir "/vendor"))
 
+;;; Autoclosing for '' "" [] {} etc.
+(require 'autoclosing-mode)
+
+;;; TextMate mode
+(add-to-list 'load-path (concat dotfiles-dir "/vendor/textmate.el"))
+(require 'textmate)
+(textmate-mode t)
+
 ;;; Yaml mode
 (add-to-list 'load-path (concat dotfiles-dir "/vendor/yaml"))
 (require 'yaml-mode)
@@ -40,7 +48,6 @@
 (add-to-list 'load-path (concat dotfiles-dir "/vendor/rhtml"))
 (require 'rhtml-mode)
 
-
 ;;; Use TAG file for find function in proyect
 ;;; try execute someting like: ctags-exuberant -a -e -f TAGS --tag-relative -R app lib vendor
 (setq rinari-tags-file-name "TAGS")
@@ -49,12 +56,6 @@
 ;;; Haml mode
 (require 'haml-mode)
 (add-to-list 'auto-mode-alist '("\\.haml$" . haml-mode))
-
-(add-hook 'haml-mode-hook
-          (lambda ()
-            (require 'auto-closing-electric)
-            (auto-closing-electric t)
-            ))
 
 ;;; Sass mode
 (require 'sass-mode)
@@ -158,6 +159,14 @@
 
 ;;; Set the tab indent to 4 spaces for javascript
 (setq espresso-indent-level 4)
+
+;;; Autoclosing hook for programming modes
+(add-hook 'espresso-mode-hook
+          (function (lambda () (autoclosing-mode t))))
+(add-hook 'sgml-mode-hook
+          (function (lambda () (autoclosing-mode t))))
+(add-hook 'haml-mode-hook
+          (function (lambda () (autoclosing-mode t))))
 
 ;;; Helper Binding keys
 (global-set-key [f5] 'desktop-save)
