@@ -3,6 +3,9 @@
 
 (add-to-list 'load-path (concat dotfiles-dir "/vendor"))
 
+;;; Whitespace mode
+(require 'whitespace)
+
 ;;; Autoclosing for '' "" [] {} etc.
 (require 'autoclosing-mode)
 
