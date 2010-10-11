@@ -179,5 +179,71 @@
 (global-set-key [f9] 'ecb-activate)
 (global-set-key (kbd "M-n") 'toggle-fullscreen)
 (global-set-key [(control shift l)] 'recenter-to-top)
+;;; Completion keys
+(global-set-key (kbd "C-ñ") 'hippie-expand)
+(global-set-key (kbd "C-M-ñ") 'dabbrev-completion)
+;;; unbind some textmate binding
+(let ((map *textmate-mode-map*))
+  (define-key map [(meta t)] nil)
+  (define-key map [(meta shift t)] nil)
+  (define-key map [(meta shift l)] nil)
+  (define-key map [(meta return)] nil)
+  (define-key map [(control tab)] nil)
+  (define-key map [(control shift tab)] nil)
+  )
+
+
+;;; TODO: refactor in separate modules this functionality (find file
+;;; recursively in project)
+(require 'project-root)
+(setq project-roots
+      `(("Generic Perl Project"
+         :root-contains-files ("t" "lib")
+         :filename-regex ,(regexify-ext-list '(pl pm))
+         :on-hit (lambda (p) (message (car p))))
+        ("Django project"
+         :root-contains-files ("manage.py")
+         :filename-regex ,(regexify-ext-list '(py html css js))
+         :exclude-paths ("media" "contrib"))
+        ("Rails project"
+         :root-contains-files ("app" "public")
+         :filename-regex ,(regexify-ext-list '(rb html css js yml rhtml erb builder rjs xml))
+         :exclude-paths ("tmp" "script" "log" ".git" ".bundle"))))
+
+(defun my-ido-project-files ()
+  "Use ido to select a file from the project."
+  (interactive)
+  (let (my-project-root project-files tbl)
+    (unless project-details (project-root-fetch))
+    (setq my-project-root (cdr project-details))
+
+    ;; get project files
+    (setq project-files
+          (split-string
+           (shell-command-to-string
+            (concat "find "
+                    my-project-root
+                    " \\( -name \"*.svn\" -o -name \"*.git\" \\) -prune -o -type f -print | grep -E -v \"\.(pyc)$\""
+                    )) "\n"))
+    ;; populate hash table (display repr => path)
+    (setq tbl (make-hash-table :test 'equal))
+    (let (ido-list)
+      (mapc (lambda (path)
+
+              ;; format path for display in ido list
+              (setq key (replace-regexp-in-string "\\(.*?\\)\\([^/]+?\\)$" "\\2|\\1" path))
+              ;; strip project root
+              (setq key (replace-regexp-in-string my-project-root "" key))
+              ;; remove trailing | or /
+              (setq key (replace-regexp-in-string "\\(|\\|/\\)$" "" key))
+              (puthash key path tbl)
+              (push key ido-list)
+              )
+            project-files
+            )
+      (find-file (gethash (ido-completing-read "project-files: " ido-list) tbl)))))
+
+;; bind to a key for quick access
+(define-key global-map [f6] 'my-ido-project-files)
 
 (provide 'starter-kit-ror)
