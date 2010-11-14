@@ -37,3 +37,7 @@ git submodule update vendor/textmate.el
 git submodule init vendor/wrap-region
 git submodule update vendor/wrap-region
 
+# Install drag-stuff
+git submodule init vendor/drag-stuff
+git submodule update vendor/drag-stuff
+

@@ -19,6 +19,11 @@
 (require 'wrap-region)
 (wrap-region-global-mode t)
 
+;;; Drag Stuff mode
+(add-to-list 'load-path (concat dotfiles-dir "/vendor/drag-stuff"))
+(require 'drag-stuff)
+(drag-stuff-global-mode t)
+
 ;;; Yaml mode
 (add-to-list 'load-path (concat dotfiles-dir "/vendor/yaml"))
 (require 'yaml-mode)
