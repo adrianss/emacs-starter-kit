@@ -10,9 +10,9 @@
 (require 'autoclosing-mode)
 
 ;;; TextMate mode
-(add-to-list 'load-path (concat dotfiles-dir "/vendor/textmate.el"))
-(require 'textmate)
-(textmate-mode t)
+;; (add-to-list 'load-path (concat dotfiles-dir "/vendor/textmate.el"))
+;; (require 'textmate)
+;; (textmate-mode t)
 
 ;;; Yaml mode
 (add-to-list 'load-path (concat dotfiles-dir "/vendor/yaml"))
@@ -182,15 +182,18 @@
 ;;; Completion keys
 (global-set-key (kbd "C-ñ") 'hippie-expand)
 (global-set-key (kbd "C-M-ñ") 'dabbrev-completion)
-;;; unbind some textmate binding
-(let ((map *textmate-mode-map*))
-  (define-key map [(meta t)] nil)
-  (define-key map [(meta shift t)] nil)
-  (define-key map [(meta shift l)] nil)
-  (define-key map [(meta return)] nil)
-  (define-key map [(control tab)] nil)
-  (define-key map [(control shift tab)] nil)
-  )
+(global-set-key (kbd "C-M-j") 'join-line)
+(global-set-key (kbd "C-º") 'indent-region)
+
+;;; unbind some textmate binding asdf asdf 
+;; (let ((map *textmate-mode-map*))
+;;   (define-key map [(meta t)] nil)
+;;   (define-key map [(meta shift t)] nil)
+;;   (define-key map [(meta shift l)] nil)
+;;   (define-key map [(meta return)] nil)
+;;   (define-key map [(control tab)] nil)
+;;   (define-key map [(control shift tab)] nil)
+;;   )
 
 
 ;;; TODO: refactor in separate modules this functionality (find file
