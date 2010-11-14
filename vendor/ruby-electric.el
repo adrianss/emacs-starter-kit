@@ -113,13 +113,7 @@ strings. Note that you must have Font Lock enabled."
   (ruby-electric-setup-keymap))
 
 (defun ruby-electric-setup-keymap()
-  (define-key ruby-mode-map " " 'ruby-electric-space)
-  (define-key ruby-mode-map "{" 'ruby-electric-curlies)
-  (define-key ruby-mode-map "(" 'ruby-electric-matching-char)
-  (define-key ruby-mode-map "[" 'ruby-electric-matching-char)
-  (define-key ruby-mode-map "\"" 'ruby-electric-matching-char)
-  (define-key ruby-mode-map "\'" 'ruby-electric-matching-char)
-  (define-key ruby-mode-map "|" 'ruby-electric-bar))
+  (define-key ruby-mode-map " " 'ruby-electric-space))
 
 (defun ruby-electric-space (arg)
   (interactive "P")
