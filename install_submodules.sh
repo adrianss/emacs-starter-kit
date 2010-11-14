@@ -32,3 +32,8 @@ git submodule update vendor/rhtml
 # Install textmate mode
 git submodule init vendor/textmate.el
 git submodule update vendor/textmate.el
+
+# Install wrap-region
+git submodule init vendor/wrap-region
+git submodule update vendor/wrap-region
+

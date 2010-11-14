@@ -14,6 +14,11 @@
 ;; (require 'textmate)
 ;; (textmate-mode t)
 
+;;; Wrap Region mode
+(add-to-list 'load-path (concat dotfiles-dir "/vendor/wrap-region"))
+(require 'wrap-region)
+(wrap-region-global-mode t)
+
 ;;; Yaml mode
 (add-to-list 'load-path (concat dotfiles-dir "/vendor/yaml"))
 (require 'yaml-mode)
@@ -167,6 +172,8 @@
 (add-hook 'espresso-mode-hook
           (function (lambda () (autoclosing-mode t))))
 (add-hook 'sgml-mode-hook
+          (function (lambda () (autoclosing-mode t))))
+(add-hook 'haml-mode-hook
           (function (lambda () (autoclosing-mode t))))
 (add-hook 'haml-mode-hook
           (function (lambda () (autoclosing-mode t))))
