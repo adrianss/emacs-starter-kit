@@ -5,10 +5,10 @@
   (interactive)
   (color-theme-install
    '(color-theme-myror
-     ((background-color . "#020202")
+     ((background-color . "#301010")
       (background-mode . dark)
       (border-color . "black")
-      (cursor-color . "White")
+      (cursor-color . "Grey")
       (foreground-color . "#C3C3C3")
       (mouse-color . "Grey"))
      (default ((t (:stipple nil :foreground "#aaaaaa" :inverse-video nil :box nil :strike-through nil :overline nil :underline nil :slant normal :weight normal :width normal))))
