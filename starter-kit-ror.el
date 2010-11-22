@@ -180,7 +180,7 @@
           (function (lambda () (autoclosing-mode t))))
 (add-hook 'haml-mode-hook
           (function (lambda () (autoclosing-mode t))))
-(add-hook 'haml-mode-hook
+(add-hook 'ruby-mode-hook
           (function (lambda () (autoclosing-mode t))))
 
 ;;; Helper Binding keys
