@@ -182,6 +182,23 @@
           (function (lambda () (autoclosing-mode t))))
 (add-hook 'ruby-mode-hook
           (function (lambda () (autoclosing-mode t))))
+(add-hook 'c-mode-hook
+          (function (lambda () (autoclosing-mode t))))
+(add-hook 'c++-mode-hook
+          (function (lambda () (autoclosing-mode t))))
+
+;;; Dont break lines
+(auto-fill-mode nil)
+
+(defun retro-linefeed ()
+  "Indent, insert line before and indent"
+  (interactive)
+  (back-to-indentation)
+  (indent-or-complete)
+  (previous-line)
+  (paredit-newline))
+
+(global-set-key (kbd "C-<return>") 'retro-linefeed)
 
 ;;; Helper Binding keys
 (global-set-key [f5] 'desktop-save)
@@ -197,6 +214,7 @@
 (global-set-key (kbd "C-M-j") 'join-line)
 (global-set-key (kbd "C-º") 'indent-region)
 
+(define-key c-mode-map (kbd "C-c c") 'compile)
 ;;; unbind some textmate binding asdf asdf 
 ;; (let ((map *textmate-mode-map*))
 ;;   (define-key map [(meta t)] nil)
@@ -223,7 +241,7 @@
         ("Rails project"
          :root-contains-files ("app" "public")
          :filename-regex ,(regexify-ext-list '(rb html css js yml rhtml erb builder rjs xml))
-         :exclude-paths ("tmp" "script" "log" ".git" ".bundle"))))
+         :exclude-paths ("tmp" "script" "log" ".bundle" "coverage"))))
 
 (defun my-ido-project-files ()
   "Use ido to select a file from the project."
@@ -238,7 +256,10 @@
            (shell-command-to-string
             (concat "find "
                     my-project-root
-                    " \\( -name \"*.svn\" -o -name \"*.git\" \\) -prune -o -type f -print | grep -E -v \"\.(pyc)$\""
+                    " \\( -name \"*.svn\" -o -name \"*.git\" \\) -prune -o "
+                    " -type f -print "
+                    " | grep -E -v "
+                    "\"\.(#.+|DS_Store|svn|png|jpe?g|gif|elc|rbc|pyc|swp|psd|ai|pdf|mov|aep|dmg|zip|gz|pyc)$\" "
                     )) "\n"))
     ;; populate hash table (display repr => path)
     (setq tbl (make-hash-table :test 'equal))

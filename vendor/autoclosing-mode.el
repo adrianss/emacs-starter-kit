@@ -39,6 +39,7 @@
         ("[" . skeleton-pair-insert-maybe)
         ("(" . skeleton-pair-insert-maybe)
         ("{" . skeleton-pair-insert-maybe)
+        ("|" . skeleton-pair-insert-maybe)
         )       
       :group 'autoclosing
       (progn
@@ -50,8 +51,9 @@
 (setq autoclosing-pairs '( ( ?\( . ?\) )
   (  ?\' . ?\' )
   (  ?\" . ?\" )
-  (  ?[ . ?] )
-  (  ?{ . ?} )
+  (  ?\| . ?\| )
+  (  ?\[ . ?\] )
+  (  ?\{ . ?\} )
   )
       )
 

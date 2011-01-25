@@ -61,11 +61,8 @@
   "\\s-\\(do\\|{\\)\\s-+|")
 
 (defvar ruby-electric-matching-delimeter-alist
-  '((?\[ . ?\])
-    (?\( . ?\))
-    (?\' . ?\')
-    (?\` . ?\`)
-    (?\" . ?\")))
+  '()
+  )
 
 (defcustom ruby-electric-simple-keywords-re
   (regexp-opt '("def" "if" "class" "module" "unless" "case" "while" "do" "until" "for" "begin") t)
@@ -78,11 +75,6 @@ is to be inserted."
 inserted. The word 'all' will do all insertions."
   :type '(set :extra-offset 8
               (const :tag "Everything" all )
-              (const :tag "Curly brace" ?\{ )
-              (const :tag "Square brace" ?\[ )
-              (const :tag "Round brace" ?\( )
-              (const :tag "Quote" ?\' )
-              (const :tag "Double quote" ?\" )
               (const :tag "Back quote" ?\` )
               (const :tag "Vertical bar" ?\| ))
   :group 'ruby-electric) 
