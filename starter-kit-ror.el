@@ -6,6 +6,8 @@
 ;;; Whitespace mode
 ;; (require 'whitespace)
 
+(require 'rvm)
+
 ;;; Autoclosing for '' "" [] {} etc.
 (require 'autoclosing-mode)
 
@@ -240,7 +242,7 @@
          :exclude-paths ("media" "contrib"))
         ("Rails project"
          :root-contains-files ("app" "public")
-         :filename-regex ,(regexify-ext-list '(rb html css js yml rhtml erb builder rjs xml))
+         :filename-regex ,(regexify-ext-list '(rb html css js yml rhtml erb builder rjs xml eruby))
          :exclude-paths ("tmp" "script" "log" ".bundle" "coverage"))))
 
 (defun my-ido-project-files ()
