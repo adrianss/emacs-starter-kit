@@ -10,9 +10,6 @@
 [submodule "vendor/yasnippet"]
 	path = vendor/yasnippet
 	url = http://github.com/emacsmirror/yasnippet.git
-[submodule "vendor/zencoding"]
-	path = vendor/zencoding
-	url = https://github.com/rooney/zencoding
 [submodule "vendor/rhtml"]
 	path = vendor/rhtml
 	url = http://github.com/eschulte/rhtml.git
@@ -26,5 +23,5 @@
 	path = vendor/drag-stuff
 	url = git://github.com/rejeep/drag-stuff.git
 [submodule "zencoding"]
-	path = zencoding
+	path = vendor/zencoding
 	url = https://github.com/rooney/zencoding
