@@ -8,7 +8,7 @@
      ((background-color . "#301010")
       (background-mode . dark)
       (border-color . "black")
-      (cursor-color . "Grey")
+      (cursor-color . "purple")
       (foreground-color . "#C3C3C3")
       (mouse-color . "Grey"))
      (default ((t (:stipple nil :foreground "#aaaaaa" :inverse-video nil :box nil :strike-through nil :overline nil :underline nil :slant normal :weight normal :width normal))))
