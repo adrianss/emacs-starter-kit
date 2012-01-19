@@ -86,6 +86,10 @@
 (require 'feature-mode)
 (add-to-list 'auto-mode-alist '("\\.feature$" . feature-mode))
 
+(add-to-list 'load-path (concat dotfiles-dir "/vendor/mo-git-blame"))
+(autoload 'mo-git-blame-file "mo-git-blame" nil t)
+(autoload 'mo-git-blame-current "mo-git-blame" nil t)
+
 ;;; Yasnippet 0.6.1c stable
 ;; (add-to-list 'load-path (concat dotfiles-dir "/vendor/yasnippet-0.6.1c"))
 ;; (require 'yasnippet)
