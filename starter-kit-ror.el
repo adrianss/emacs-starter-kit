@@ -33,7 +33,11 @@
 
 ;;; Sass CSS
 (add-to-list 'auto-mode-alist '("\\.scss$" . css-mode))
-(setq css-indent-offset 2)
+(setq css-indent-offset 4)
+(setq css-indent-level 4)
+
+;;; rhtml offset 
+(setq sgml-basic-offset 4)
 
 ;;; ZenCoding
 (add-to-list 'load-path (concat dotfiles-dir "/vendor/zencoding"))
@@ -62,6 +66,7 @@
 ;;; rhtml mode
 (add-to-list 'load-path (concat dotfiles-dir "/vendor/rhtml"))
 (require 'rhtml-mode)
+(add-to-list 'auto-mode-alist '("\\.eruby$" . rhtml-mode))
 
 ;;; Use TAG file for find function in proyect
 ;;; try execute someting like: ctags-exuberant -a -e -f TAGS --tag-relative -R app lib vendor
