@@ -41,3 +41,7 @@ git submodule update vendor/wrap-region
 git submodule init vendor/drag-stuff
 git submodule update vendor/drag-stuff
 
+# Install mo-git-blame
+git submodule init vendor/mo-git-blame
+git submodule update vendor/mo-git-blame
+

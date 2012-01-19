@@ -25,3 +25,6 @@
 [submodule "zencoding"]
 	path = vendor/zencoding
 	url = https://github.com/rooney/zencoding
+[submodule "vendor/mo-git-blame"]
+	path = vendor/mo-git-blame
+	url = git://github.com/mbunkus/mo-git-blame.git
